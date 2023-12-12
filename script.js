@@ -1,12 +1,11 @@
 //1 Constructor Functions
-function PersonConstructor(fullName, money, sleepMood, healthRate) {
+function Person(fullName, money, sleepMood, healthRate) {
     this.fullName = fullName;
     this.money = money;
     this.sleepMood = sleepMood;
     this.healthRate = healthRate;
   }
-  
-  PersonConstructor.prototype.sleep = function(hours) {
+Person.prototype.sleep = function(hours) {
     if (hours === 7) {
       this.sleepMood = 'happy';
     } else if (hours < 7) {
@@ -15,8 +14,7 @@ function PersonConstructor(fullName, money, sleepMood, healthRate) {
       this.sleepMood = 'lazy';
     }
   };
-  
-  PersonConstructor.prototype.eat = function(meals) {
+Person.prototype.eat = function(meals) {
     if (meals === 3) {
       this.healthRate = 100;
     } else if (meals === 2) {
@@ -25,12 +23,10 @@ function PersonConstructor(fullName, money, sleepMood, healthRate) {
       this.healthRate = 50;
     }
   };
-  
-  PersonConstructor.prototype.buy = function(items) {
+Person.prototype.buy = function(items) {
     this.money -= items * 10;
   };
-  
-  const person1 = new PersonConstructor("Youssef badr", 1000, '', 0);
+  const person1 = new Person("Youssef badr", 1000, '', 0);
   person1.sleep(8);
   person1.eat(2);
   person1.buy(3);
@@ -44,7 +40,6 @@ class PersonClass {
       this.sleepMood = sleepMood;
       this.healthRate = healthRate;
     }
-  
     sleep(hours) {
       if (hours === 7) {
         this.sleepMood = 'happy';
@@ -54,7 +49,6 @@ class PersonClass {
         this.sleepMood = 'lazy';
       }
     }
-  
     eat(meals) {
       if (meals === 3) {
         this.healthRate = 100;
@@ -64,17 +58,15 @@ class PersonClass {
         this.healthRate = 50;
       }
     }
-  
     buy(items) {
       this.money -= items * 10;
     }
   }
-  
-  const person2 = new PersonClass("omar", 2450, '', 0);
-  person2.sleep(6);
-  person2.eat(3);
-  person2.buy(2);
-  console.log(person2);
+const person2 = new PersonClass("omar", 2450, '', 0);
+person2.sleep(6);
+person2.eat(3);
+person2.buy(2);
+console.log(person2);
 
 //3 Objects Linking to Other Objects (OLOO)
 const PersonOLOO = {
@@ -85,7 +77,6 @@ const PersonOLOO = {
       this.healthRate = healthRate;
       return this;
     },
-  
     sleep(hours) {
       if (hours === 7) {
         this.sleepMood = 'happy';
@@ -95,7 +86,6 @@ const PersonOLOO = {
         this.sleepMood = 'lazy';
       }
     },
-  
     eat(meals) {
       if (meals === 3) {
         this.healthRate = 100;
@@ -105,12 +95,10 @@ const PersonOLOO = {
         this.healthRate = 50;
       }
     },
-  
     buy(items) {
       this.money -= items * 10;
     },
   };
-  
   const person3 = Object.create(PersonOLOO).init("Ahmed mohamed", 200, '', 0);
   person3.sleep(7);
   person3.eat(1);
@@ -118,13 +106,12 @@ const PersonOLOO = {
   console.log(person3);
 
 //4 Factory Functions
-function createPersonFactory(fullName, money, sleepMood, healthRate) {
+function PersonFactory(fullName, money, sleepMood, healthRate) {
     return {
       fullName,
       money,
       sleepMood,
       healthRate,
-  
       sleep(hours) {
         if (hours === 7) {
           this.sleepMood = 'happy';
@@ -134,7 +121,6 @@ function createPersonFactory(fullName, money, sleepMood, healthRate) {
           this.sleepMood = 'lazy';
         }
       },
-  
       eat(meals) {
         if (meals === 3) {
           this.healthRate = 100;
@@ -144,14 +130,12 @@ function createPersonFactory(fullName, money, sleepMood, healthRate) {
           this.healthRate = 50;
         }
       },
-  
       buy(items) {
         this.money -= items * 10;
       },
     };
   }
-  
-  const person4 = createPersonFactory("Karim adel", 5000, '', 0);
+  const person4 = PersonFactory("Karim adel", 5000, '', 0);
   person4.sleep(6);
   person4.eat(2);
   person4.buy(4);
